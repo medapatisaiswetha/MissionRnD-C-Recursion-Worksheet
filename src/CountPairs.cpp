@@ -12,9 +12,10 @@ Input : String and length of string
 Output : return Total number of pairs Count .
 
 Example Input : count_pairs_wrapper("zzzaz",5);
-Example Output : 2
+Example Output : 2+9/
 
-Hint : You can use count_pairs_wrapper as a wrapper function for your original recursive function which might take
+Hint : You can use count_pairs_wrapper as a wrapper function for your original recursive function
+which might take
 more parameters .
 
 NOTE : Donot use any Global Variables
@@ -24,13 +25,36 @@ NOTE : Donot use any Global Variables
 
 //You can use this function ,for the actual recursion .Think of similar functions for all other problems.
 int count_pairs(char *str, int len, int start, int end){
-	return 0;
+	int count = 0;
+	if (str[start] == str[end])
+		count = 1;
+	else
+		count = 0;
+	start++;
+	end = start + 2;
+	if (str[end] != '\0')
+	count = count + count_pairs(str,len,start,end);
+	return count;
 }
 
-int count_pairs_wrapper(char *str,int len){
+int count_pairs_wrapper(char *str,int len)
+{
     //Wrapper function which might call a recursive function ,which might take extra parameters .
-	return 0;
+	/*int start = 0, end = start + 2, count = 0;
 
+	for (int i = 0;str[end]!='\0';i++)
+	{  
+		count = count + count_pairs(str,len,start,end);
+	 	start++;
+		end = start + 2;
+	}
+
+	return count;*/
+	if (len == 0)
+		return 0;
+	else
+
+	return count_pairs(str,len,0,2);
 }
 
 
